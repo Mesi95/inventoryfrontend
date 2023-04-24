@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Container, Grid, Paper, Button} from '@mui/material';
+import Appbar from './Appbar';
 
 export default function Category() {
     const paperStyle={padding:'50px 20px',width:500,margin:"40px auto"}
@@ -28,15 +29,16 @@ export default function Category() {
     <Box
       component="form"
       sx={{
-        '& > :not(style)': { marginTop: 1 ,marginLeft:10},
+        '& > :not(style)': { marginTop: 1 ,marginLeft:1},
       }}
       noValidate
       autoComplete="off"
     >
     <Container>
-    <Paper elevation={3} style={paperStyle}>
+      <Appbar/>
+    <Paper elevation={0} style={paperStyle}>
         <h1 style={{color:"black"}}>ADD CATEGOREY</h1>
-    <Grid container direction={"column"} spacing={3}>
+    <Grid container direction={"column"} spacing={1}>
           <Grid item >
                 <TextField id="outlined-basic" label="Category Name" variant="outlined" fullWidth 
                 value={category_name}

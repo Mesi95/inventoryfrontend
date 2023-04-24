@@ -4,6 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useState } from "react";
 import axios from "axios";
+import Box from '@mui/material/Box';
+import { Paper} from '@mui/material';
+
+const paperStyle={padding:'50px 20px',width:500,margin:"40px auto"}
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -49,10 +53,19 @@ function MyForm() {
 
     }
     return (
+        <Box
+        component="form"
+        sx={{
+          '& > :not(style)': { marginTop: 1 ,marginLeft:1},
+        }}
+        noValidate
+        autoComplete="off"
+      >
         <Container>
+        <Paper elevation={0} style={paperStyle}>
+        <h1 style={{color:"black"}}>ADD EMPLOYEE</h1>
             <Form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Type your Full Name..."
@@ -63,7 +76,6 @@ function MyForm() {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
-                    <Form.Label>Email</Form.Label>
                     <Form.Control
                         type="email"
                         placeholder="Type your e-mail..."
@@ -80,7 +92,6 @@ function MyForm() {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formGroupPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Type your password..."
@@ -102,7 +113,9 @@ function MyForm() {
                     </Button>
                 </div>
             </Form>
+            </Paper>
         </Container>
+        </Box>
     );
 }
 

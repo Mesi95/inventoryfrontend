@@ -1,18 +1,24 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import { Container} from '@mui/material';
+import { BrowserRouter } from 'react-router-dom';
+import Appbar from './Appbar';
+
 export default function Home() {
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            INVENTORY MANAGEMENT SYSTEM
-          </Typography>
-        </Toolbar>
-      </AppBar>
+   
+  return (    
+
+    <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { marginTop: 1 ,marginLeft:1},
+      }}
+      noValidate
+      autoComplete="off"
+    >
+    <Container>
+    <Appbar/>
+    </Container>
     </Box>
   );
 }

@@ -17,6 +17,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SysAdpage from './SysAdpage';
+import Home from "./Home";
 
 function LoginPages() {
     const [selectedRole, setselectedRole] = useState('');
@@ -31,7 +32,7 @@ function LoginPages() {
         setselectedRole(e)
     }
     function navL(){
-        navigate('/Category');
+        navigate('/Home');
     }
     /**  login Starts */
     async function loginCheck(event) {

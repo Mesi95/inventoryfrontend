@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Container, Paper } from '@mui/material';
 import Table from '@mui/material/Table';
+import Appbar from './Appbar';
 import TableContainer from '@mui/material/TableContainer';
 import { AlignHorizontalLeft } from '@mui/icons-material';
 // import {DataGrid} from '@mui/x-data-grid';
@@ -39,6 +40,7 @@ export default function ListCategory() {
       autoComplete="off"
     >
             <Container>
+            <Appbar/>
         <Paper elevation={0} style={paperStyle} >
             {/* <TableContainer component={Paper} > */}
             <Table sx={{ minWidth: 0 }} aria-label="customized table">

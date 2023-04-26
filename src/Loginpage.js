@@ -26,7 +26,13 @@ function LoginPages() {
     const navigate = useNavigate();
     const getEmail = localStorage.getItem("emailData")
     const getPassword = localStorage.getItem("passwordData")
+    const [isLoggedin,setIsLoggedin] = useState(false);
 
+    const logout=()=>{
+        localStorage.removeItem('token-info');
+        setIsLoggedin(false);
+    }
+<Button className="mt-3  btn" onClick={logout} >LOGOUT</Button>
     const handleSelect = (e) => {
         console.log(e);
         setselectedRole(e)
@@ -64,6 +70,7 @@ function LoginPages() {
         }
     }
     /**  login Ends */
+
     return (
         // <div className="background">
         <div className="login-box">
@@ -72,7 +79,6 @@ function LoginPages() {
                     <div class="col left-background ">
                         <h2>Rama Construction</h2>
                         <p>Powered By BitBot</p>
-
                     </div>
                     <div class="col login-form">
                         <form >

@@ -1,3 +1,5 @@
+import * as React from 'react';
+import {  Label } from "reactstrap";
 import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,6 +8,8 @@ import { useState } from "react";
 import axios from "axios";
 import Box from '@mui/material/Box';
 import { Paper} from '@mui/material';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const paperStyle={padding:'50px 20px',width:500,margin:"40px auto"}
 
@@ -32,11 +36,18 @@ function MyForm() {
     } = useForm({
         resolver: yupResolver(validationSchema)
     });
-
+    const handleSelect = (e) => {
+        console.log(e);
+        setselectedRole(e)
+    }
     const onSubmit = (data) => console.log(data);
     const [employeename, setEmployeename] = useState("");
+    const [selectedRole, setselectedRole] = useState('');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [adm,setAdmin]=React.useState([]);
+    const [sta,setSta]=React.useState([]);
+    
     async function saveEmployee(event) {
         event.preventDefault();
         try {
@@ -44,6 +55,7 @@ function MyForm() {
                 employeename: employeename,
                 email: email,
                 password: password,
+                role: selectedRole,
             });
             alert("Employee Registation Successfully");
 
@@ -74,6 +86,13 @@ function MyForm() {
                             setEmployeename(event.target.value);
                         }}
                     />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formGroupEmail">
+                <h4 style={{color:"black"}}>Select Role</h4>
+                 <select id="outlined-basic" label="Category" variant="outlined" fullWidth >
+                    <option value={adm}>System Admin</option>
+                    <option value={sta}>Stakeholder</option>                       
+            </select>  
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Control
